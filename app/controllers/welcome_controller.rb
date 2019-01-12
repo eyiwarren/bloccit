@@ -10,4 +10,7 @@ class WelcomeController < ApplicationController
 
   def faq
   end
+
+  def social
+  end
 end
