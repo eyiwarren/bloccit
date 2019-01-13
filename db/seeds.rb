@@ -31,6 +31,7 @@ require 'random_data'
 #Find a particular post, and if not created, create it!
 Post.find_or_create_by(title: "Inaugural Post", body: "This represents the body of my inaugural post" )
 
+#Find a particular comment by its associated post, and if not created, create it!
 Comment.find_or_create_by(post: posts.first, body:"This is my comment on inaugural title.")
 
  puts "Seed finished"
