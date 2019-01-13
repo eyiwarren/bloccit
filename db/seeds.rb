@@ -28,6 +28,11 @@ require 'random_data'
    )
  end
 
+#Find a particular post, and if not created, create it!
+Post.find_or_create_by(title: "Inaugural Post", body: "This represents the body of my inaugural post" )
+
+Comment.find_or_create_by(post: posts.first, body:"This is my comment on inaugural title.")
+
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"

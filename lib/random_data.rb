@@ -21,6 +21,7 @@
      sentence.capitalize << "."
    end
 
+
  # #8
    def self.random_word
      letters = ('a'..'z').to_a
