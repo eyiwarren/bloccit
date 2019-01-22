@@ -18,6 +18,15 @@ end
 
 advertisements = Advertisement.all
 
+# create questions
+50.times do
+    Question.create!(
+        title: RandomData.random_sentence,
+        body: RandomData.random_paragraph,
+        resolved: false
+    )
+end
+
 
  # Create Posts
  50.times do
@@ -50,3 +59,4 @@ Comment.find_or_create_by(post: posts.first, body:"This is my comment on inaugur
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
  puts "#{Advertisement.count} ads created"
+ puts "#{Question.count} questions created"
