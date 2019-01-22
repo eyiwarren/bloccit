@@ -20,7 +20,7 @@ RSpec.describe PostsController, type: :controller do
 end
 
 
-describe "GET #show" do
+describe "GET show" do
   it "returns http success" do
 # #16
     get :show, params: { id: my_post.id }
@@ -41,7 +41,7 @@ describe "GET #show" do
 end
 
    # #1
-     describe "GET #new" do
+     describe "GET new" do
        it "returns http success" do
          get :new
          expect(response).to have_http_status(:success)
