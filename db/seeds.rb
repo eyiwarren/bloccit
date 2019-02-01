@@ -7,6 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'random_data'
 
+# Create Topics
+ 15.times do
+   Topic.create!(
+     name:         RandomData.random_sentence,
+     description:  RandomData.random_paragraph
+   )
+ end
+ topics = Topic.all
+
 50.times do
 
 Advertisement.create!(
@@ -33,6 +42,7 @@ end
  # #1
    Post.create!(
  # #2
+     topic:  topics.sample,
      title:  RandomData.random_sentence,
      body:   RandomData.random_paragraph
    )
@@ -56,6 +66,7 @@ Post.find_or_create_by(title: "Inaugural Post", body: "This represents the body 
 Comment.find_or_create_by(post: posts.first, body:"This is my comment on inaugural title.")
 
  puts "Seed finished"
+ puts "#{Topic.count} topics created"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
  puts "#{Advertisement.count} ads created"
