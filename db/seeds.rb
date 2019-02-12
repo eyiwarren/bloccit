@@ -16,6 +16,17 @@ require 'random_data'
  end
  topics = Topic.all
 
+ 30.times do
+    SponsoredPost.create!(
+        topic: topics.sample,
+        title: RandomData.random_sentence,
+        body: RandomData.random_paragraph,
+        price: RandomData.random_number
+    )
+end
+
+sponsored_posts = SponsoredPost.all
+
 50.times do
 
 Advertisement.create!(
@@ -67,6 +78,7 @@ Comment.find_or_create_by(post: posts.first, body:"This is my comment on inaugur
 
  puts "Seed finished"
  puts "#{Topic.count} topics created"
+ puts "#{SponsoredPost.count} sponsored posts created"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
  puts "#{Advertisement.count} ads created"

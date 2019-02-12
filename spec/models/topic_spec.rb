@@ -14,6 +14,14 @@ RSpec.describe Topic, type: :model do
        expect(topic).to respond_to(:posts)
      end
    end
+
+  # context "associations" do
+  #   it "should be associated with SponsoredPost" do
+  #     expect(topic).to respond_to(:sponsored_posts)
+  #   end
+   #end
+
+   it { is_expected.to have_many(:sponsored_posts) }
  # #1
    describe "attributes" do
      it "has name, description, and public attributes" do
