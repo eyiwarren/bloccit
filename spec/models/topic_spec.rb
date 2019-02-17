@@ -15,11 +15,12 @@ RSpec.describe Topic, type: :model do
      end
    end
 
-  # context "associations" do
-  #   it "should be associated with SponsoredPost" do
-  #     expect(topic).to respond_to(:sponsored_posts)
-  #   end
-   #end
+   it { is_expected.to validate_presence_of(:name) }
+   it { is_expected.to validate_presence_of(:description) }
+
+   it { is_expected.to validate_length_of(:name).is_at_least(5) }
+   it { is_expected.to validate_length_of(:description).is_at_least(15) }
+
 
    it { is_expected.to have_many(:sponsored_posts) }
  # #1
