@@ -1,13 +1,13 @@
 class User < ApplicationRecord
   # #2
    before_save { self.email = email.downcase if email.present? }
-   before_save {
-        name_array = []
-        name.to_s.split.each do |part|
-            name_array << part.capitalize
-        end
-        self.name = name_array.join(" ")
-    }
+  # before_save {
+  #      name_array = []
+  #      name.to_s.split.each do |part|
+    #        name_array << part.capitalize
+    #    end
+    #    self.name = name_array.join(" ")
+    #}
 
  # #3
    validates :name, length: { minimum: 1, maximum: 100 }, presence: true

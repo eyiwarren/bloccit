@@ -5,12 +5,17 @@ RSpec.describe User, type: :model do
 
    #it { is_expected.to validate_presence_of(:name) }
    it "passes validation with name" do
-     expect(user).to be_valid
+     expect(user).to respond_to(:name)
    end
 
    #it { is_expected.to validate_length_of(:name).is_at_least(1) }
    it "passes validation with length of name at least 1 letter" do
      expect(user).to be_valid
+
+     u = User.new(email: "email@email.com", password: "password")
+     expect(u.valid?).to be_falsey
+     u.name = "bob"
+     expect(u.valid?).to be_truthy
    end
 
    # Shoulda tests for email
