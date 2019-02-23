@@ -4,6 +4,22 @@ class UsersController < ApplicationController
        @user = User.new
      end
 
+<<<<<<< HEAD
+=======
+     def confirm
+
+       @user = User.new
+       @user.name = params[:user][:name]
+       @user.email = params[:user][:email]
+       @user.password = params[:user][:password]
+       @user.password_confirmation = params[:user][:password_confirmation]
+     end
+
+     def user_params
+       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+     end
+
+>>>>>>> checkpoint-rails-Auth-usermodel
      def create
  # #9
      @user = User.new
@@ -21,4 +37,9 @@ class UsersController < ApplicationController
        render :new
      end
    end
+<<<<<<< HEAD
+=======
+      helper_method :user_params
+
+>>>>>>> checkpoint-rails-Auth-usermodel
 end
