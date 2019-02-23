@@ -4,8 +4,7 @@ class UsersController < ApplicationController
        @user = User.new
      end
 
-<<<<<<< HEAD
-=======
+
      def confirm
 
        @user = User.new
@@ -19,7 +18,7 @@ class UsersController < ApplicationController
        params.require(:user).permit(:name, :email, :password, :password_confirmation)
      end
 
->>>>>>> checkpoint-rails-Auth-usermodel
+
      def create
  # #9
      @user = User.new
@@ -31,15 +30,13 @@ class UsersController < ApplicationController
  # #10
      if @user.save
        flash[:notice] = "Welcome to Bloccit #{@user.name}!"
+       create_session(@user)
        redirect_to root_path
      else
        flash.now[:alert] = "There was an error creating your account. Please try again."
        render :new
      end
-   end
-<<<<<<< HEAD
-=======
-      helper_method :user_params
+  end
 
->>>>>>> checkpoint-rails-Auth-usermodel
+ helper_method :user_params
 end
