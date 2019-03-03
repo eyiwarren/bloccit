@@ -7,6 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'random_data'
 
+# Create Users
+ 5.times do
+   User.create!(
+ # #3
+   name:     RandomData.random_name,
+   email:    RandomData.random_email,
+   password: RandomData.random_sentence
+   )
+ end
+ users = User.all
+
+
 # Create Topics
  15.times do
    Topic.create!(
@@ -16,43 +28,13 @@ require 'random_data'
  end
  topics = Topic.all
 
- 30.times do
-    SponsoredPost.create!(
-        topic: topics.sample,
-        title: RandomData.random_sentence,
-        body: RandomData.random_paragraph,
-        price: RandomData.random_number
-    )
-end
-
-sponsored_posts = SponsoredPost.all
-
-50.times do
-
-Advertisement.create!(
-        title: RandomData.random_sentence,
-        copy: RandomData.random_paragraph,
-        price: RandomData.random_number
-        )
-end
-
-advertisements = Advertisement.all
-
-# create questions
-50.times do
-    Question.create!(
-        title: RandomData.random_sentence,
-        body: RandomData.random_paragraph,
-        resolved: false
-    )
-end
-
 
  # Create Posts
  50.times do
  # #1
    Post.create!(
  # #2
+     user:   users.sample,
      topic:  topics.sample,
      title:  RandomData.random_sentence,
      body:   RandomData.random_paragraph
@@ -71,15 +53,19 @@ end
  end
 
 #Find a particular post, and if not created, create it!
-Post.find_or_create_by(title: "Inaugural Post", body: "This represents the body of my inaugural post" )
+#Post.find_or_create_by(title: "Inaugural Post", body: "This represents the body of my inaugural post" )
 
 #Find a particular comment by its associated post, and if not created, create it!
 Comment.find_or_create_by(post: posts.first, body:"This is my comment on inaugural title.")
 
+user = User.first
+ user.update_attributes!(
+   email: 'eyiwarren@gmail.com', # replace this with your personal email
+   password: 'helloworld'
+ )
+
  puts "Seed finished"
+ puts "#{User.count} users created"
  puts "#{Topic.count} topics created"
- puts "#{SponsoredPost.count} sponsored posts created"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
- puts "#{Advertisement.count} ads created"
- puts "#{Question.count} questions created"

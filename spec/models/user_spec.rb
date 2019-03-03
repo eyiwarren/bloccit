@@ -1,14 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.create!(name: "bloccit user", email: "user@bloccit.com", password: "password") }
+  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
 
-   #it { is_expected.to validate_presence_of(:name) }
+  context "associations" do
+    it "should be associated with Post" do
+      expect(user).to respond_to(:posts)
+    end
+  end
+    #it { is_expected.to have_many(:posts) }
+
    it "passes validation with name" do
      expect(user).to respond_to(:name)
    end
 
-   #it { is_expected.to validate_length_of(:name).is_at_least(1) }
+
    it "passes validation with length of name at least 1 letter" do
      expect(user).to be_valid
 
@@ -18,8 +24,7 @@ RSpec.describe User, type: :model do
      expect(u.valid?).to be_truthy
    end
 
-   # Shoulda tests for email
-   #it { is_expected.to validate_presence_of(:email) }
+
    it "passes validation with email" do
      expect(user).to be_valid
 
@@ -39,8 +44,7 @@ RSpec.describe User, type: :model do
      expect(u.valid?).to be_truthy
    end
 
-   #it { is_expected.to validate_uniqueness_of(:email) }
-   #it { is_expected.to validate_length_of(:email).is_at_least(3) }
+
    it "passes validation with length of email at least 3 characters" do
     expect(user).to be_valid
 
@@ -50,22 +54,16 @@ RSpec.describe User, type: :model do
     expect(u.valid?).to be_truthy
    end
 
-   #it { is_expected.to allow_value("user@bloccit.com").for(:email) }
-   it "passes validation with value of email as user@bloccit.com" do
-<<<<<<< HEAD
 
+   it "passes validation with value of email as user@bloccit.com" do
      expect(user).to be_valid
-=======
-    expect(user).to be_valid
 
     u = User.new(email: "email@email.com", password: "password")
     expect(u.valid?).to be_falsey
     u.name = "bob"
     expect(u.valid?).to be_truthy
->>>>>>> checkpoint-rails-Auth-usermodel
    end
 
-   #it { is_expected.to validate_presence_of(:password) }
    it "passes validation with password" do
      expect(user).to be_valid
 
@@ -84,11 +82,10 @@ RSpec.describe User, type: :model do
      expect(u.valid?).to be_truthy
    end
 
-   #it { is_expected.to have_secure_password }
-   #it { is_expected.to validate_length_of(:password).is_at_least(6) }
+
    it "passes validation with length of password at least 6 characters" do
      expect(user).to be_valid
-     
+
      u = User.new(email: "email@email.com", password: "password")
      expect(u.valid?).to be_falsey
      u.name = "bob"

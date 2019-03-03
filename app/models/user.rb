@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # #2
    before_save { self.email = email.downcase if email.present? }
+   has_many :posts, dependent: :destroy
   # before_save {
   #      name_array = []
   #      name.to_s.split.each do |part|
