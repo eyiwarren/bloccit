@@ -10,6 +10,13 @@ RSpec.describe User, type: :model do
   end
     #it { is_expected.to have_many(:posts) }
 
+    #it { is_expected.to have_many(:comments) }
+    context "associations" do
+      it "should be associated with Comment" do
+        expect(user).to respond_to(:comments)
+      end
+    end
+
    it "passes validation with name" do
      expect(user).to respond_to(:name)
    end

@@ -15,7 +15,11 @@ let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", passw
 let(:post) { topic.posts.create!(title: title, body: body, user: user) }
 
    #it { is_expected.to belong_to(:topic) }
+   #it { is_expected.to have_many(:comments) }
 
+   describe "associations" do
+     it { expect(post).to respond_to(:comments) }
+   end
 
    describe "associations" do
      it { expect(post).to respond_to(:topic) }
