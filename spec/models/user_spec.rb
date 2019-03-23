@@ -17,6 +17,16 @@ RSpec.describe User, type: :model do
       end
     end
 
+    #it { is_expected.to have_many(:votes) }
+    context "associations" do
+      it "should be associated with Votes" do
+        expect(user).to respond_to(:votes)
+      end
+    end
+    #describe "associations" do
+    #  it { expect(user).to respond_to(:votes) }
+    #end
+
    it "passes validation with name" do
      expect(user).to respond_to(:name)
    end
@@ -167,6 +177,5 @@ RSpec.describe User, type: :model do
        expect(user_with_invalid_email).to_not be_valid
      end
     end
-
 
 end
