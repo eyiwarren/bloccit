@@ -26,6 +26,13 @@ let(:post) { topic.posts.create!(title: title, body: body, user: user) }
      it { expect(post).to respond_to(:votes) }
    end
 
+   #it { is_expected.to have_many(:favorites) }
+   context "associations" do
+     it "should be associated with Favorites" do
+       expect(post).to respond_to(:favorites)
+     end
+   end
+
    describe "associations" do
      it { expect(post).to respond_to(:topic) }
    end
